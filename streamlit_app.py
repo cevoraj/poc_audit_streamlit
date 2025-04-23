@@ -2,14 +2,26 @@ import streamlit as st
 import time
 from PIL import Image
 
+#import streamlit_authenticator as stauth
 
-uploaded_file = st.file_uploader("Choose a file")
+col1, spacer, col2 = st.columns([1,6,1])
+
+with col1:
+    st.image("logo.png", width=100)
+
+with col2:
+    st.image("itau logo.png", width=100)
+
+
+        
+uploaded_file = st.file_uploader("Choose a file for brand audit")
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
         
     # Display the image in Streamlit
-    st.image(image, caption='Uploaded Image.')
+    st.image(image, caption='Uploaded Image.',width=300)
 
+    st.text_area("Campaign specific brief",value="Optional", height=100)
 if uploaded_file is not None:
     if st.button("Run audit"):
         time.sleep(8)
